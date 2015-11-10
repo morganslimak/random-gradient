@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<script>
+		var color1 = {r: 0, g: 0, b: 0};
+		var color2 = {r: 0, g: 0, b: 0};
+		var body = $("body");
+
+		function setColor(color) {
+		  function randNum() {
+		    var num = (Math.floor(Math.random() * 1000));
+		    while (num >= 255) num = (Math.floor(Math.random() * 1000));
+		    return num;
+		  }
+		  color.r = randNum();
+		  color.g = randNum();
+		  color.b = randNum();
+		}
+
+		window.changeColor = function() {
+			setColor(color1);
+			setColor(color2);
+			body.css("background", "rgba("+color1.r+","+color1.g+","+color1.b+",.5)");
+			body.css("background", "-webkit-linear-gradient(left, rgba("+color1.r+","+color1.g+","+color1.b+",.5), rgba("+color2.r+","+color2.g+","+color2.b+",1))");
+			body.css("background", "-moz-linear-gradient(left, rgba("+color1.r+","+color1.g+","+color1.b+",.5), rgba("+color2.r+","+color2.g+","+color2.b+",1))");
+			body.css("background", "-ms-linear-gradient(left, rgba("+color1.r+","+color1.g+","+color1.b+",.5), rgba("+color2.r+","+color2.g+","+color2.b+",1))");
+			body.css("background", "-o-linear-gradient(left, rgba("+color1.r+","+color1.g+","+color1.b+",.5), rgba("+color2.r+","+color2.g+","+color2.b+",1))");
+			body.css("background", "linear-gradient(to right, rgba("+color1.r+","+color1.g+","+color1.b+",.5), rgba("+color2.r+","+color2.g+","+color2.b+",1))");
+			body.css("color", "rgba("+color1.r+","+color1.g+","+color1.b+",1)");
+		}
+		changeColor();
+	</script>
+	<button onclick="changeColor()">Random background gradient</button>
+</body>
+</html>
